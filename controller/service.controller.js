@@ -1,7 +1,6 @@
 const fs = require("fs");
 const Images = require("../models/Images");
 const User = require("../models/userModel");
-const NewImages = require("../models/NewImages");
 const https = require("https");
 const request = require("request");
 const path = require("path");
@@ -24,7 +23,7 @@ exports.removeBg = async (req, res) => {
     const { email } = req.user;
     const { imageName } = req.body;
     const { userPosition } = await User.findOne({ email });
-    const imageCount = await NewImages.countDocuments({
+    const imageCount = await Images.countDocuments({
       email: email,
     });
     const fileExtension = imageName.substr(imageName.lastIndexOf("."));
