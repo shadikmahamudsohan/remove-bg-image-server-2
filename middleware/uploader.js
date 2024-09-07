@@ -4,6 +4,8 @@ const User = require("../models/userModel");
 const Images = require("../models/Images");
 
 exports.uploadImage = async (req, res, next) => {
+  console.log("in image uploader middleware");
+
   const email = req.user.email;
   const { userPosition } = await User.findOne({ email });
   const imageCount = await Images.countDocuments({
